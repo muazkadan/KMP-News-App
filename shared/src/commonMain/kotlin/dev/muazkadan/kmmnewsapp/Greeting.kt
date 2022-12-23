@@ -1,9 +1,8 @@
 package dev.muazkadan.kmmnewsapp
 
-class Greeting {
-    private val platform: Platform = getPlatform()
+class Greeting(private val platform: Platform) {
 
     fun greet(): String {
-        return "Hello ny name ${platform.name}!"
+        return "Hello my name ${platform.name}!"
     }
 }

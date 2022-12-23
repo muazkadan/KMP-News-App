@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.7.21"
 }
 
 kotlin {
@@ -23,11 +24,15 @@ kotlin {
 
     sourceSets {
         val ktorVersion = "2.0.2"
+        val koinVersion = "3.2.0"
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.insert-koin:koin-core:${koinVersion}")
+                implementation("io.insert-koin:koin-test:${koinVersion}")
             }
         }
         val commonTest by getting {
@@ -35,11 +40,7 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-            }
-        }
+        val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting

@@ -41,4 +41,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    val koinVersion = "3.2.0"
+    implementation("io.insert-koin:koin-core:${koinVersion}")
+    implementation("io.insert-koin:koin-android:${koinVersion}")
 }
