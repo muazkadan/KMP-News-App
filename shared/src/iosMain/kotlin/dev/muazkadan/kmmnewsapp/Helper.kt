@@ -1,6 +1,8 @@
 package dev.muazkadan.kmmnewsapp
 
 import dev.muazkadan.kmmnewsapp.di.appModule
+import dev.muazkadan.kmmnewsapp.di.dataModule
+import dev.muazkadan.kmmnewsapp.di.networkModule
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
@@ -12,6 +14,6 @@ class GreetingHelper : KoinComponent {
 
 fun initKoin() {
     startKoin {
-        modules(listOf(appModule()))
+        modules(listOf(appModule(), networkModule(), dataModule()))
     }
 }
