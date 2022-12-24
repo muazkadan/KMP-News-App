@@ -9,8 +9,8 @@ struct iOSApp: App {
     }
     
 	var body: some Scene {
-		WindowGroup {
-			ContentView()
+		WindowGroup { 
+			CategoryScreen(viewModel: CategoryScreen.CategoryViewModel())
 		}
 	}
 }
