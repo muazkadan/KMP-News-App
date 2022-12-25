@@ -17,12 +17,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import dev.muazkadan.kmmnewsapp.android.presentation.Screen
 import dev.muazkadan.kmmnewsapp.android.presentation.components.CategoryCard
-import dev.muazkadan.kmmnewsapp.data.model.CategoryModel
 import org.koin.androidx.compose.getViewModel
 
 /**
@@ -30,7 +28,7 @@ import org.koin.androidx.compose.getViewModel
  * Created on 9/8/2022.
  */
 @Composable
-fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel()) {
+fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel(), navController: NavController) {
     val gridState = rememberLazyGridState()
     val uiState by viewModel.uiState.collectAsState()
 
@@ -64,7 +62,7 @@ fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel()) {
             ) {
                 items(uiState.categories) { category ->
                     CategoryCard(category = category) {
-                        //TODO
+                        navController.navigate(Screen.NewsDetailsScreen.withArgs(category.value))
                     }
                 }
             }
