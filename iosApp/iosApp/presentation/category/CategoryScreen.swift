@@ -19,14 +19,12 @@ struct CategoryScreen: View {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 125))]) {
                         ForEach(viewModel.categoriesList, id: \.self){ category in
-                            CategoryCard(category: category) { category in
-                                // TODO
-                            }
+                            CategoryCard(category: category)
                         }
                     }
                     .padding()
                 }
-                .navigationTitle("KMM News App")
+                .navigationTitle("News App")
             }
         }
     }
