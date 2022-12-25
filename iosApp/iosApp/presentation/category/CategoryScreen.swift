@@ -11,31 +11,24 @@ import shared
 
 struct CategoryScreen: View {
     @ObservedObject private(set) var viewModel: CategoryViewModel
-    
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 125))]) {
-                ForEach(viewModel.categoriesList, id: \.self){ category in
-                    CardView(category: category)
+        NavigationView{
+            if(viewModel.isLoading){
+                ActivityIndicator().frame(width: 75, height: 75)
+            }else {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 125))]) {
+                        ForEach(viewModel.categoriesList, id: \.self){ category in
+                            CategoryCard(category: category) { category in
+                                // TODO
+                            }
+                        }
+                    }
+                    .padding()
                 }
+                .navigationTitle("KMM News App")
             }
-            .padding()
         }
-    }
-}
-
-struct CardView: View {
-    let category: CategoryModel
-    var body: some View {
-        VStack {
-            Text(category.name)
-                .font(.headline)
-        }
-        .frame(width: 135, height: 50)
-        .padding()
-        .background(Color.white)
-        .cornerRadius(8)
-        .shadow(radius: 8)
     }
 }
 

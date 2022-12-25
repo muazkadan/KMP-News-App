@@ -1,11 +1,10 @@
 package dev.muazkadan.kmmnewsapp.data.repositroy
 
 import dev.muazkadan.kmmnewsapp.data.model.CategoryModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.delay
 
 class CategoryRepository {
-    fun getCategories(): Flow<List<CategoryModel>> = flow {
+    suspend fun getCategories(): List<CategoryModel> {
         val categories = listOf(
             CategoryModel("All", "all"),
             CategoryModel("National", "national"),
@@ -21,6 +20,7 @@ class CategoryRepository {
             CategoryModel("Science", "science"),
             CategoryModel("Automobile", "automobile")
         )
-        emit(categories)
+        delay(2000)
+        return categories
     }
 }

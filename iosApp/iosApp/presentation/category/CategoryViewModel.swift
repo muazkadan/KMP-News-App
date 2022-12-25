@@ -12,11 +12,13 @@ import shared
 extension CategoryScreen {
     @MainActor class CategoryViewModel: ObservableObject {
         @Published var categoriesList = [CategoryModel]()
+        @Published var isLoading = true
         init() {
             CategoryHelper().getCategories { categories, error in
                 DispatchQueue.main.async {
                     if let categories = categories {
                         self.categoriesList = categories
+                        self.isLoading = false
                     }
                 }
             }

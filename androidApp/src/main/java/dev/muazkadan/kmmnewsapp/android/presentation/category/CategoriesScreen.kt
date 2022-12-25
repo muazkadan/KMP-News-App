@@ -17,8 +17,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.muazkadan.kmmnewsapp.android.presentation.components.CategoryCard
 import dev.muazkadan.kmmnewsapp.data.model.CategoryModel
 import org.koin.androidx.compose.getViewModel
 
@@ -33,59 +36,38 @@ fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel()) {
 
     Scaffold(
         topBar = {
-            TopAppBar {
+            TopAppBar(backgroundColor = Color.White) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "KMM News App"
+                        text = "KMM News App",
+                        color = Color.Black,
+                        style = MaterialTheme.typography.h6,
                     )
                 }
             }
         }
     ) {
-        LazyVerticalGrid(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(it),
-            state = gridState,
-            columns = GridCells.Adaptive(140.dp)
-        ) {
-            items(uiState.categories) { category ->
-                CategoryCard(category = category) {
-                    //TODO
+        if (uiState.isLoading) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        } else {
+            LazyVerticalGrid(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it),
+                state = gridState,
+                columns = GridCells.Adaptive(140.dp)
+            ) {
+                items(uiState.categories) { category ->
+                    CategoryCard(category = category) {
+                        //TODO
+                    }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun CategoryCard(
-    category: CategoryModel,
-    modifier: Modifier = Modifier,
-    onClickCategory: (category: String) -> Unit
-) {
-    Card(
-        modifier = modifier
-            .padding(8.dp)
-            .aspectRatio(2F)
-            .clickable {
-                onClickCategory.invoke(category.value)
-            },
-        elevation = 10.dp,
-        backgroundColor = Color.White,
-        shape = RoundedCornerShape(8.dp)
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = category.name,
-                fontSize = 20.sp
-            )
         }
     }
 }
