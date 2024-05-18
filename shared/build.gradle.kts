@@ -3,6 +3,8 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization") version "1.9.23"
+    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
+    id("androidx.room") version "2.7.0-alpha01"
 }
 
 kotlin {
@@ -30,7 +32,7 @@ kotlin {
     }
 
     sourceSets {
-        val ktorVersion = "2.0.2"
+        val ktorVersion = "2.3.8"
         val koinVersion = "3.2.0"
         val commonMain by getting {
             dependencies {
@@ -81,10 +83,20 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+
+dependencies {
+    add("kspAndroid", "androidx.room:room-compiler:2.7.0-alpha01")
+    add("kspIosSimulatorArm64", "androidx.room:room-compiler:2.7.0-alpha01")
+    add("kspIosX64", "androidx.room:room-compiler:2.7.0-alpha01")
+    add("kspIosArm64", "androidx.room:room-compiler:2.7.0-alpha01")
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
