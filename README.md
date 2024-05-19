@@ -17,6 +17,7 @@ Tech Stack:
 - Kotlin Coroutines
 - Ktor for api calls
 - Koin for dependency injection
+- Room for caching
 - and more...
 
 # Screenshots
