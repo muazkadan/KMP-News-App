@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 fun dataModule() = module {
     single { CategoryRepository() }
-    single { NewsRepository(get()) }
+    single { NewsRepository(get(), get()) }
 }

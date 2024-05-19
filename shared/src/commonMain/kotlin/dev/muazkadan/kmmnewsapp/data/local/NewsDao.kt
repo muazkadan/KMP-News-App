@@ -16,6 +16,6 @@ interface NewsDao {
     @Delete
     suspend fun deleteNews(items: List<NewsEntity>)
 
-    @Query("SELECT * FROM NewsItemEntity WHERE category IN (:newsCategory)")
+    @Query("SELECT * FROM NewsEntity WHERE category IN (:newsCategory)")
     suspend fun getNews(newsCategory: String): List<NewsEntity>
 }

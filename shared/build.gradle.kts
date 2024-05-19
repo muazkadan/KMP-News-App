@@ -43,6 +43,8 @@ kotlin {
                 implementation("io.insert-koin:koin-core:${koinVersion}")
                 implementation("io.insert-koin:koin-test:${koinVersion}")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("androidx.room:room-runtime:2.7.0-alpha01")
+                implementation("androidx.sqlite:sqlite-bundled:2.5.0-SNAPSHOT")
             }
         }
         val commonTest by getting {
@@ -80,7 +82,7 @@ kotlin {
 
 android {
     namespace = "dev.muazkadan.kmmnewsapp"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 24
     }
