@@ -40,7 +40,7 @@ fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel(), navControlle
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "KMM News App",
+                        text = "KMP News App",
                         color = Color.Black,
                         style = MaterialTheme.typography.h6,
                     )

@@ -1,4 +1,4 @@
-# KMM News App
+# KMP News App
 
 ### Project Description
 
