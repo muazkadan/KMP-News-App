@@ -1,10 +1,8 @@
 package dev.muazkadan.kmmnewsapp.di
 
-import dev.muazkadan.kmmnewsapp.data.repositroy.CategoryRepository
-import dev.muazkadan.kmmnewsapp.data.repositroy.NewsRepository
-import org.koin.dsl.module
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 
-fun dataModule() = module {
-    single { CategoryRepository() }
-    single { NewsRepository(get(), get()) }
-}
+@Module
+@ComponentScan("dev.muazkadan.kmmnewsapp.data")
+class DataModule

@@ -1,10 +1,8 @@
 package dev.muazkadan.kmmnewsapp.di
 
-import dev.muazkadan.kmmnewsapp.Greeting
-import dev.muazkadan.kmmnewsapp.Platform
-import org.koin.dsl.module
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 
-fun appModule() = module {
-    single { Platform() }
-    single { Greeting(get()) }
-}
+@Module
+@ComponentScan("dev.muazkadan.kmmnewsapp")
+class AppModule

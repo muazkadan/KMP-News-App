@@ -7,8 +7,10 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.client.plugins.observer.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
+import org.koin.core.annotation.KoinInternalApi
 import org.koin.dsl.module
 
+@OptIn(KoinInternalApi::class)
 fun networkModule() = module {
     single {
         HttpClient {

@@ -21,14 +21,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dev.muazkadan.kmmnewsapp.android.presentation.Screen
 import dev.muazkadan.kmmnewsapp.android.presentation.components.CategoryCard
-import org.koin.androidx.compose.getViewModel
 
 /**
  * @author muaz
  * Created on 9/8/2022.
  */
 @Composable
-fun CategoriesScreen(viewModel: CategoryViewModel = getViewModel(), navController: NavController) {
+fun CategoriesScreen(viewModel: CategoryViewModel, navController: NavController) {
     val gridState = rememberLazyGridState()
     val uiState by viewModel.uiState.collectAsState()
 

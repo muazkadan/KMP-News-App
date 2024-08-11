@@ -33,7 +33,8 @@ kotlin {
 
     sourceSets {
         val ktorVersion = "2.3.8"
-        val koinVersion = "3.2.0"
+        val koinVersion = "4.0.0-RC1"
+        val koin_annotations_version = "1.4.0-RC3"
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
@@ -45,6 +46,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("androidx.room:room-runtime:2.7.0-alpha01")
                 implementation("androidx.sqlite:sqlite-bundled:2.5.0-SNAPSHOT")
+                api("io.insert-koin:koin-annotations:$koin_annotations_version")
             }
         }
         val commonTest by getting {
@@ -97,6 +99,11 @@ dependencies {
     add("kspIosSimulatorArm64", "androidx.room:room-compiler:2.7.0-alpha01")
     add("kspIosX64", "androidx.room:room-compiler:2.7.0-alpha01")
     add("kspIosArm64", "androidx.room:room-compiler:2.7.0-alpha01")
+    add("kspCommonMainMetadata", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
+    add("kspAndroid", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
+    add("kspIosX64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
+    add("kspIosArm64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
+    add("kspIosSimulatorArm64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
 }
 
 room {

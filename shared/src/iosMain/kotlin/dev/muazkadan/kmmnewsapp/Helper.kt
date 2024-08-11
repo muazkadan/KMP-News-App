@@ -6,8 +6,8 @@ import dev.muazkadan.kmmnewsapp.data.local.NewsDatabase
 import dev.muazkadan.kmmnewsapp.data.local.instantiateImpl
 import dev.muazkadan.kmmnewsapp.data.repositroy.CategoryRepository
 import dev.muazkadan.kmmnewsapp.data.repositroy.NewsRepository
-import dev.muazkadan.kmmnewsapp.di.appModule
-import dev.muazkadan.kmmnewsapp.di.dataModule
+import dev.muazkadan.kmmnewsapp.di.AppModule
+import dev.muazkadan.kmmnewsapp.di.DataModule
 import dev.muazkadan.kmmnewsapp.di.networkModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -16,6 +16,7 @@ import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import platform.Foundation.NSHomeDirectory
+import org.koin.ksp.generated.module
 
 class CategoryHelper : KoinComponent {
     private val categoryRepository: CategoryRepository by inject()
@@ -42,7 +43,7 @@ fun initKoin() {
                     .build()
             }
         }
-        modules(listOf(appModule(), networkModule(), dataModule(), dbModule))
+        modules(listOf(AppModule().module, networkModule(), DataModule().module, dbModule))
 
     }
 }

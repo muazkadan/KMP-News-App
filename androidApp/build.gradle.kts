@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
 }
 
 android {
@@ -46,10 +47,12 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    val koinVersion = "3.2.0"
+    val koinVersion = "4.0.0-RC1"
     implementation("io.insert-koin:koin-core:${koinVersion}")
     implementation("io.insert-koin:koin-android:${koinVersion}")
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
+    val koin_annotations_version = "1.4.0-RC3"
+    api("io.insert-koin:koin-annotations:$koin_annotations_version")
     // Navigation
     val navVersion = "2.5.2"
     implementation("androidx.navigation:navigation-compose:$navVersion")

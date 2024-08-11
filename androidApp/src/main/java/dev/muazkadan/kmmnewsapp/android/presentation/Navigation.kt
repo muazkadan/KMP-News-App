@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import dev.muazkadan.kmmnewsapp.android.presentation.category.CategoriesScreen
 import dev.muazkadan.kmmnewsapp.android.presentation.news.NewsScreen
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 /**
  * @author muaz
@@ -19,7 +19,7 @@ fun Navigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.CategoriesScreen.route) {
         composable(route = Screen.CategoriesScreen.route) {
-            CategoriesScreen(getViewModel(), navController)
+            CategoriesScreen(koinViewModel(), navController)
         }
         composable(
             route = Screen.NewsDetailsScreen.route + "/{category}",
@@ -30,7 +30,7 @@ fun Navigation() {
             )
         ) {
             it.arguments?.getString("category")?.let { categoryName ->
-                NewsScreen(categoryName.capitalize(), getViewModel(), navController)
+                NewsScreen(categoryName.capitalize(), koinViewModel(), navController)
             }
         }
     }

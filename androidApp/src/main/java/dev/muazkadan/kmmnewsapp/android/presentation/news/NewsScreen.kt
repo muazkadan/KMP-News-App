@@ -30,12 +30,11 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import dev.muazkadan.kmmnewsapp.android.utils.extension.asUri
 import dev.muazkadan.kmmnewsapp.data.model.NewsModel
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun NewsScreen(
     categoryName: String,
-    viewModel: NewsViewModel = getViewModel(),
+    viewModel: NewsViewModel,
     navController: NavController
 ) {
     val uiState by viewModel.uiState.collectAsState()

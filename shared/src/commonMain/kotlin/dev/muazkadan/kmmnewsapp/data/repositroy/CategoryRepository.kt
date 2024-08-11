@@ -2,7 +2,9 @@ package dev.muazkadan.kmmnewsapp.data.repositroy
 
 import dev.muazkadan.kmmnewsapp.data.model.CategoryModel
 import kotlinx.coroutines.delay
+import org.koin.core.annotation.Single
 
+@Single
 class CategoryRepository {
     suspend fun getCategories(): List<CategoryModel> {
         val categories = listOf(

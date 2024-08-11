@@ -2,13 +2,14 @@ package dev.muazkadan.kmmnewsapp.android
 
 import android.app.Application
 import dev.muazkadan.kmmnewsapp.android.di.viewModelModule
-import dev.muazkadan.kmmnewsapp.di.appModule
-import dev.muazkadan.kmmnewsapp.di.dataModule
+import dev.muazkadan.kmmnewsapp.di.AppModule
+import dev.muazkadan.kmmnewsapp.di.DataModule
 import dev.muazkadan.kmmnewsapp.di.networkModule
 import dev.muazkadan.kmmnewsapp.getDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
+import org.koin.ksp.generated.module
 
 class NewsApp : Application() {
 
@@ -21,7 +22,15 @@ class NewsApp : Application() {
                     getDatabase(this@NewsApp)
                 }
             }
-            modules(listOf(appModule(), networkModule(), dataModule(), viewModelModule(), dbModule))
+            modules(
+                listOf(
+                    AppModule().module,
+                    networkModule(),
+                    DataModule().module,
+                    viewModelModule(),
+                    dbModule
+                )
+            )
         }
     }
 }

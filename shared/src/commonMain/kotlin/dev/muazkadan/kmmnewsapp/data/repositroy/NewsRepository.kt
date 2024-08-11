@@ -7,7 +7,9 @@ import dev.muazkadan.kmmnewsapp.domain.mapper.NewsItemMapper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import org.koin.core.annotation.Single
 
+@Single
 class NewsRepository constructor(
     private var httpClient: HttpClient,
     private var database: NewsDatabase
