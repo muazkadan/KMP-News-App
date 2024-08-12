@@ -4,7 +4,7 @@ import android.app.Application
 import dev.muazkadan.kmmnewsapp.android.di.viewModelModule
 import dev.muazkadan.kmmnewsapp.di.AppModule
 import dev.muazkadan.kmmnewsapp.di.DataModule
-import dev.muazkadan.kmmnewsapp.di.networkModule
+import dev.muazkadan.kmmnewsapp.di.NetworkModule
 import dev.muazkadan.kmmnewsapp.getDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -25,7 +25,7 @@ class NewsApp : Application() {
             modules(
                 listOf(
                     AppModule().module,
-                    networkModule(),
+                    NetworkModule().module,
                     DataModule().module,
                     viewModelModule(),
                     dbModule

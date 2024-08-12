@@ -2,23 +2,19 @@ package dev.muazkadan.kmmnewsapp.data.repositroy
 
 import dev.muazkadan.kmmnewsapp.data.local.NewsDatabase
 import dev.muazkadan.kmmnewsapp.data.model.NewsModel
-import dev.muazkadan.kmmnewsapp.data.model.NewsResponseModel
 import dev.muazkadan.kmmnewsapp.domain.mapper.NewsItemMapper
-import io.ktor.client.HttpClient
-import io.ktor.client.call.body
-import io.ktor.client.request.get
+import dev.muazkadan.kmmnewsapp.network.NewsApi
 import org.koin.core.annotation.Single
 
 @Single
 class NewsRepository constructor(
-    private var httpClient: HttpClient,
+    private val newsApi: NewsApi,
     private var database: NewsDatabase
 ) {
 
     suspend fun getCategoryNews(category: String): List<NewsModel> {
         return try {
-            val response = httpClient.get(urlString = "https://inshortsapi.vercel.app/news?category=${category.lowercase()}")
-                .body<NewsResponseModel>()
+            val response = newsApi.getCategoryNews(category)
             val dao = database.dao()
             val mapper = NewsItemMapper()
             if(response.success){

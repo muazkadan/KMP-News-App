@@ -8,7 +8,7 @@ import dev.muazkadan.kmmnewsapp.data.repositroy.CategoryRepository
 import dev.muazkadan.kmmnewsapp.data.repositroy.NewsRepository
 import dev.muazkadan.kmmnewsapp.di.AppModule
 import dev.muazkadan.kmmnewsapp.di.DataModule
-import dev.muazkadan.kmmnewsapp.di.networkModule
+import dev.muazkadan.kmmnewsapp.di.NetworkModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.core.component.KoinComponent
@@ -43,7 +43,7 @@ fun initKoin() {
                     .build()
             }
         }
-        modules(listOf(AppModule().module, networkModule(), DataModule().module, dbModule))
+        modules(listOf(AppModule().module, NetworkModule().module, DataModule().module, dbModule))
 
     }
 }
