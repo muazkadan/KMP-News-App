@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp") version "2.0.20-1.0.25"
 }
 
 android {
@@ -21,10 +22,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
-    }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -38,26 +36,26 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.3.2")
-    implementation("androidx.compose.ui:ui-tooling:1.3.2")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.2")
-    implementation("androidx.compose.foundation:foundation:1.3.1")
+    implementation("androidx.compose.ui:ui:1.7.1")
+    implementation("androidx.compose.ui:ui-tooling:1.7.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.7.1")
+    implementation("androidx.compose.foundation:foundation:1.7.1")
     implementation("androidx.compose.material:material:1.3.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    val koinVersion = "4.0.0-RC1"
+    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    val koinVersion = "4.0.0-RC2"
     implementation("io.insert-koin:koin-core:${koinVersion}")
     implementation("io.insert-koin:koin-android:${koinVersion}")
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
-    val koin_annotations_version = "1.4.0-RC3"
+    val koin_annotations_version = "1.4.0-RC4"
     api("io.insert-koin:koin-annotations:$koin_annotations_version")
     // Navigation
-    val navVersion = "2.5.2"
+    val navVersion = "2.8.0"
     implementation("androidx.navigation:navigation-compose:$navVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Coil
-    implementation("io.coil-kt:coil-compose:2.2.1")
+    implementation("io.coil-kt:coil-compose:2.6.0")
 }

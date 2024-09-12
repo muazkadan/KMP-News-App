@@ -8,7 +8,16 @@ import dev.muazkadan.kmmnewsapp.data.local.entity.NewsEntity
     entities = [NewsEntity::class],
     version = 1
 )
-abstract class NewsDatabase : RoomDatabase() {
+abstract class NewsDatabase : RoomDatabase(), DB {
 
     abstract fun dao(): NewsDao
+
+    override fun clearAllTables() {
+        super.clearAllTables()
+    }
+}
+
+// TODO: remove when fixed
+interface DB {
+    fun clearAllTables() {}
 }

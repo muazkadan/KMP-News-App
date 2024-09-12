@@ -1,4 +1,5 @@
 *.iml
+.kotlin
 .gradle
 .idea
 .DS_Store
@@ -97,3 +98,10 @@ fabric.properties
 /.idea/deploymentTargetDropDown.xml
 /.idea/inspectionProfiles/Project_Default.xml
 /shared/schemas/dev.muazkadan.kmmnewsapp.data.local.NewsDatabase/*
+
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings

@@ -2,9 +2,9 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    kotlin("plugin.serialization") version "1.9.23"
-    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
-    id("androidx.room") version "2.7.0-alpha01"
+    kotlin("plugin.serialization") version "2.0.20"
+    id("com.google.devtools.ksp") version "2.0.20-1.0.25"
+    id("androidx.room") version "2.7.0-alpha05"
 }
 
 kotlin {
@@ -34,8 +34,9 @@ kotlin {
     sourceSets {
         val ktorVersion = "2.3.8"
         val koinVersion = "4.0.0-RC1"
-        val koin_annotations_version = "1.4.0-RC3"
+        val koin_annotations_version = "1.4.0-RC4"
         val commonMain by getting {
+            kotlin.srcDir("build/generated/ksp/metadata")
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
@@ -95,17 +96,16 @@ android {
 }
 
 dependencies {
-    add("kspAndroid", "androidx.room:room-compiler:2.7.0-alpha01")
-    add("kspIosSimulatorArm64", "androidx.room:room-compiler:2.7.0-alpha01")
-    add("kspIosX64", "androidx.room:room-compiler:2.7.0-alpha01")
-    add("kspIosArm64", "androidx.room:room-compiler:2.7.0-alpha01")
-    add("kspCommonMainMetadata", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
-    add("kspAndroid", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
-    add("kspIosX64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
-    add("kspIosArm64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
-    add("kspIosSimulatorArm64", "io.insert-koin:koin-ksp-compiler:1.4.0-RC3")
+    add("kspCommonMainMetadata", "androidx.room:room-compiler:2.7.0-alpha05")
+    add("kspCommonMainMetadata", "io.insert-koin:koin-ksp-compiler:1.4.0-RC4")
 }
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
 }
