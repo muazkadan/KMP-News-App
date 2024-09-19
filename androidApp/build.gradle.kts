@@ -36,23 +36,22 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.7.1")
-    implementation("androidx.compose.ui:ui-tooling:1.7.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.7.1")
-    implementation("androidx.compose.foundation:foundation:1.7.1")
-    implementation("androidx.compose.material:material:1.3.1")
+    implementation("androidx.compose.ui:ui:1.7.2")
+    implementation("androidx.compose.ui:ui-tooling:1.7.2")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.7.2")
+    implementation("androidx.compose.foundation:foundation:1.7.2")
+    implementation("androidx.compose.material:material:1.6.8")
     implementation("androidx.activity:activity-compose:1.9.2")
-    implementation("androidx.activity:activity-compose:1.9.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    val koinVersion = "4.0.0-RC2"
+    val koinVersion = "4.0.0"
     implementation("io.insert-koin:koin-core:${koinVersion}")
     implementation("io.insert-koin:koin-android:${koinVersion}")
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
     val koin_annotations_version = "1.4.0-RC4"
     api("io.insert-koin:koin-annotations:$koin_annotations_version")
     // Navigation
-    val navVersion = "2.8.0"
+    val navVersion = "2.8.1"
     implementation("androidx.navigation:navigation-compose:$navVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
